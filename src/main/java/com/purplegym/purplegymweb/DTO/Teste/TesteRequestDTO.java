@@ -1,2 +1,4 @@
-package com.purplegym.purplegymweb.DTO.Teste;public record TesteRequestDTO() {
+package com.purplegym.purplegymweb.DTO.Teste;
+
+public record TesteRequestDTO(String teste) {
 }

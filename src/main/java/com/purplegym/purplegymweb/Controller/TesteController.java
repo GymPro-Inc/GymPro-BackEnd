@@ -1,47 +1,52 @@
 package com.purplegym.purplegymweb.Controller;
 
-import com.purplegym.purplegymweb.Model.teste;
-import com.purplegym.purplegymweb.Repository.testeRepository;
+import com.purplegym.purplegymweb.DTO.Teste.TesteRequestDTO;
+import com.purplegym.purplegymweb.DTO.Teste.TesteResponseDTO;
+import com.purplegym.purplegymweb.Model.Teste;
+import com.purplegym.purplegymweb.Repository.TesteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("teste")
-public class controllerTeste {
+@CrossOrigin("*")
+public class TesteController {
 
     @Autowired
-    private testeRepository repository;
+    private TesteRepository repository;
 
     @GetMapping
-    public List<teste> getAll(){
+    public List<TesteResponseDTO> getAll(){
 
-        return repository.findAll();
+        return repository.findAll().stream().map(TesteResponseDTO::new).toList();
     }
 
     @GetMapping("/{id}")
-    public Optional<teste> getById(@PathVariable Long id) {
+    public TesteResponseDTO getById(@PathVariable UUID id) {
 
-        return repository.findById(id);
+        return repository.findById(id).stream().map(TesteResponseDTO::new).findFirst().orElse(null);
     }
 
     @PostMapping
-    public teste create(@RequestBody teste teste) {
-
-        return repository.save(teste);
+    public void create(@RequestBody TesteRequestDTO data) {
+        Teste testeData = new Teste(data);
+        repository.save(testeData);
+        return;
     }
 
     @PutMapping("/{id}")
-    public teste update(@PathVariable Long id, @RequestBody teste teste) {
+    public void update(@PathVariable UUID id, @RequestBody TesteRequestDTO data) {
 
-        teste.setId(id);
-        return repository.save(teste);
+        Teste testeData = new Teste(data);
+        testeData.setId(id);
+        repository.save(testeData);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable UUID id) {
 
         repository.deleteById(id);
     }
