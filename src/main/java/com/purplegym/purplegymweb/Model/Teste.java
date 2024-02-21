@@ -3,7 +3,6 @@ package com.purplegym.purplegymweb.Model;
 import com.purplegym.purplegymweb.DTO.Teste.TesteRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.UUID;
 
 @Table(name = "teste")
