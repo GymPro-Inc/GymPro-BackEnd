@@ -13,7 +13,6 @@ import java.util.UUID;
 @RequestMapping("usuarios")
 @CrossOrigin("*")
 public class UsuariosController {
-
     @Autowired
     private UsuariosRepository repository;
 
@@ -33,7 +32,6 @@ public class UsuariosController {
     public void create(@RequestBody UsuariosRequestDTO data) {
         Usuarios usuariosData = new Usuarios(data);
         repository.save(usuariosData);
-        return;
     }
 
     @PutMapping("/{id}")

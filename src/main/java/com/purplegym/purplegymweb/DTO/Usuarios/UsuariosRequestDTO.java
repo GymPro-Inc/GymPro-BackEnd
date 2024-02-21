@@ -1,4 +1,6 @@
 package com.purplegym.purplegymweb.DTO.Usuarios;
 
-public record UsuariosRequestDTO(String nome, String email, String senha) {
+import com.purplegym.purplegymweb.Enums.UserRole;
+
+public record UsuariosRequestDTO(String nome, String email, String senha, UserRole role) {
 }
