@@ -1,9 +1,9 @@
 package com.purplegym.purplegymweb.Controller;
 
-import com.purplegym.purplegymweb.DTO.Teste.TesteRequestDTO;
-import com.purplegym.purplegymweb.DTO.Teste.TesteResponseDTO;
-import com.purplegym.purplegymweb.Model.Teste;
-import com.purplegym.purplegymweb.Repository.TesteRepository;
+import com.purplegym.purplegymweb.domain.teste.TesteRequestDTO;
+import com.purplegym.purplegymweb.domain.teste.TesteResponseDTO;
+import com.purplegym.purplegymweb.domain.teste.Teste;
+import com.purplegym.purplegymweb.Repositories.TesteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

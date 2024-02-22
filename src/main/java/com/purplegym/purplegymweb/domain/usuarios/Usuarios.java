@@ -1,7 +1,5 @@
-package com.purplegym.purplegymweb.Model;
+package com.purplegym.purplegymweb.domain.usuarios;
 
-import com.purplegym.purplegymweb.DTO.Usuarios.UsuariosRequestDTO;
-import com.purplegym.purplegymweb.Enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +28,13 @@ public class Usuarios implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    public Usuarios(String email, String senha, UserRole role, String nome) {
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.nome = nome;
+    }
+
     public Usuarios(UsuariosRequestDTO data) {
         this.nome = data.nome();
         this.email = data.email();
@@ -47,7 +52,7 @@ public class Usuarios implements UserDetails {
     }
     @Override
     public String getPassword() {
-        return getPassword();
+        return this.senha;
     }
 
     @Override

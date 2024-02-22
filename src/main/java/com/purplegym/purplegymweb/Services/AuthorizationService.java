@@ -1,6 +1,6 @@
 package com.purplegym.purplegymweb.Services;
 
-import com.purplegym.purplegymweb.Repository.UsuariosRepository;
+import com.purplegym.purplegymweb.Repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

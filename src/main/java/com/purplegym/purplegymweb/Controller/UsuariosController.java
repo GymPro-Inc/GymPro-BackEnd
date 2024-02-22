@@ -1,9 +1,9 @@
 package com.purplegym.purplegymweb.Controller;
 
-import com.purplegym.purplegymweb.DTO.Usuarios.UsuariosRequestDTO;
-import com.purplegym.purplegymweb.DTO.Usuarios.UsuariosResponseDTO;
-import com.purplegym.purplegymweb.Model.Usuarios;
-import com.purplegym.purplegymweb.Repository.UsuariosRepository;
+import com.purplegym.purplegymweb.domain.usuarios.UsuariosRequestDTO;
+import com.purplegym.purplegymweb.domain.usuarios.UsuariosResponseDTO;
+import com.purplegym.purplegymweb.domain.usuarios.Usuarios;
+import com.purplegym.purplegymweb.Repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

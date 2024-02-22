@@ -1,6 +1,6 @@
-package com.purplegym.purplegymweb.DTO.Teste;
+package com.purplegym.purplegymweb.domain.teste;
 
-import com.purplegym.purplegymweb.Model.Teste;
+import com.purplegym.purplegymweb.domain.teste.Teste;
 import java.util.UUID;
 
 public record TesteResponseDTO(UUID id, String teste) {

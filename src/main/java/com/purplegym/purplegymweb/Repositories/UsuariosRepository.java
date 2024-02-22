@@ -1,7 +1,7 @@
-package com.purplegym.purplegymweb.Repository;
+package com.purplegym.purplegymweb.Repositories;
 
 
-import com.purplegym.purplegymweb.Model.Usuarios;
+import com.purplegym.purplegymweb.domain.usuarios.Usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

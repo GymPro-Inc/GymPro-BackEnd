@@ -1,4 +1,4 @@
-package com.purplegym.purplegymweb.Enums;
+package com.purplegym.purplegymweb.domain.usuarios;
 
 public enum UserRole {
 

@@ -1,7 +1,5 @@
-package com.purplegym.purplegymweb.DTO.Usuarios;
+package com.purplegym.purplegymweb.domain.usuarios;
 
-import com.purplegym.purplegymweb.Enums.UserRole;
-import com.purplegym.purplegymweb.Model.Usuarios;
 import java.util.UUID;
 
 public record UsuariosResponseDTO(UUID id, String nome, String email, String senha, UserRole role) {

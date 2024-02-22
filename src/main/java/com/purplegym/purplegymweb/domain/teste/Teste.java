@@ -1,6 +1,5 @@
-package com.purplegym.purplegymweb.Model;
+package com.purplegym.purplegymweb.domain.teste;
 
-import com.purplegym.purplegymweb.DTO.Teste.TesteRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.UUID;
