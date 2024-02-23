@@ -1,9 +1,6 @@
 package com.purplegym.purplegymweb.Controller;
 
-import com.purplegym.purplegymweb.domain.usuarios.AuthenticationDTO;
-import com.purplegym.purplegymweb.domain.usuarios.LoginResponseDTO;
-import com.purplegym.purplegymweb.domain.usuarios.RegisterDTO;
-import com.purplegym.purplegymweb.domain.usuarios.Usuarios;
+import com.purplegym.purplegymweb.domain.usuarios.*;
 import com.purplegym.purplegymweb.Repositories.UsuariosRepository;
 import com.purplegym.purplegymweb.infra.Security.TokenService;
 import jakarta.validation.Valid;
@@ -43,12 +40,31 @@ public class AuthenticationController {
         }
     }
 
+    @PostMapping("/loginexterno")
+    public ResponseEntity loginExterno(@RequestBody @Valid AuthenticationExternalDTO data) {
+        try {
+            if (this.repository.findByEmail(data.email()) == null) {
+                String encryptedPassword = new BCryptPasswordEncoder().encode(data.senha());
+                var user = new Usuarios(data.email(), encryptedPassword, data.origem(), data.nome(), data.role());
+                repository.save(user);
+            }
+
+            var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
+            var auth = this.authenticationManager.authenticate(usernamePassword);
+            var token = tokenService.generateToken((Usuarios) auth.getPrincipal());
+            return ResponseEntity.ok(new LoginResponseDTO(token));
+        } catch (AuthenticationException e) {
+            // Aqui você pode tratar a exceção e retornar uma resposta personalizada
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
+    }
+
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
         if (this.repository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.senha());
-        var user = new Usuarios(data.email(), encryptedPassword, data.role(), data.nome());
+        var user = new Usuarios(data.email(), encryptedPassword ,data.origem(), data.nome(), data.role());
 
         repository.save(user);
 

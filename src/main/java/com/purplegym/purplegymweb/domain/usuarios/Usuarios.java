@@ -27,12 +27,14 @@ public class Usuarios implements UserDetails {
     private String senha;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private Origem origem;
 
-    public Usuarios(String email, String senha, UserRole role, String nome) {
+    public Usuarios(String email, String senha, Origem origem, String nome, UserRole role) {
         this.email = email;
         this.senha = senha;
-        this.role = role;
+        this.origem = origem;
         this.nome = nome;
+        this.role = role;
     }
 
     public Usuarios(UsuariosRequestDTO data) {
